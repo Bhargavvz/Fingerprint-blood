@@ -4,3 +4,104 @@
 
 expo-env.d.ts
 # @end expo-cli
+
+# Expo
+.expo/
+dist/
+web-build/
+expo-env.d.ts
+
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependencies
+package-lock.json
+yarn.lock
+
+# Build outputs
+build/
+.next/
+out/
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Firebase
+.firebase/
+firebase-debug.log
+firebase-debug.*.log
+.firebaserc
+
+# TypeScript
+*.tsbuildinfo
+
+# Native
+*.ipa
+*.apk
+*.aab
+
+# Metro
+.metro-health-check*
+
+# Xcode
+ios/build/
+ios/Pods/
+ios/*.xcworkspace/xcuserdata/
+ios/*.xcodeproj/xcuserdata/
+ios/*.xcodeproj/project.xcworkspace/xcuserdata/
+ios/Podfile.lock
+
+# Android
+android/build/
+android/app/build/
+android/.gradle/
+android/local.properties
+android/key.properties
+android/app/src/main/assets/appcenter-config.json
+
+# VS Code
+.vscode/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+
+# ESLint cache
+.eslintcache
+
+# Temporary folders
+tmp/
+temp/
+
+# Editor directories and files
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
