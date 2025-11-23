@@ -8,8 +8,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Platform } from 'react-native';
 
 // API Configuration
-const API_BASE_URL = __DEV__ 
-  ? Platform.OS === 'ios' 
+const API_BASE_URL = __DEV__
+  ? Platform.OS === 'ios'
     ? 'http://localhost:8000/api/v1'
     : 'http://10.0.2.2:8000/api/v1'  // Android emulator
   : 'https://your-production-domain.com/api/v1';
@@ -68,11 +68,11 @@ class ApiService {
       const headers: Record<string, string> = {
         'Content-Type': 'application/json',
       };
-      
+
       if (token) {
         headers['Authorization'] = `Bearer ${token}`;
       }
-      
+
       return headers;
     } catch (error) {
       console.error('Error getting auth headers:', error);
@@ -92,7 +92,7 @@ class ApiService {
   private async fallbackPrediction(imageUri: string): Promise<PredictionResponse> {
     // Simulate API delay
     await new Promise(resolve => setTimeout(resolve, 2000));
-    
+
     const bloodGroups = ['A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-'];
     const randomBloodGroup = bloodGroups[Math.floor(Math.random() * bloodGroups.length)];
     const confidence = Math.floor(Math.random() * 20) + 80; // 80-99%
@@ -124,10 +124,10 @@ class ApiService {
 
     try {
       const headers = await this.getAuthHeaders();
-      
+
       // Create FormData for image upload
       const formData = new FormData();
-      
+
       // Handle different image sources
       if (Platform.OS === 'web') {
         // Web: Convert to blob
@@ -162,7 +162,7 @@ class ApiService {
   async getUserProfile(): Promise<UserProfile> {
     try {
       const headers = await this.getAuthHeaders();
-      
+
       const response = await fetch(`${API_BASE_URL}/users/profile/`, {
         method: 'GET',
         headers,
@@ -178,7 +178,7 @@ class ApiService {
   async getUserStatistics(): Promise<UserStatistics> {
     try {
       const headers = await this.getAuthHeaders();
-      
+
       const response = await fetch(`${API_BASE_URL}/users/statistics/`, {
         method: 'GET',
         headers,
@@ -202,7 +202,7 @@ class ApiService {
   async getPredictionHistory(): Promise<Prediction[]> {
     try {
       const headers = await this.getAuthHeaders();
-      
+
       const response = await fetch(`${API_BASE_URL}/predictions/`, {
         method: 'GET',
         headers,
@@ -224,7 +224,7 @@ class ApiService {
   async submitFeedback(predictionId: string, feedback: 'correct' | 'incorrect', actualBloodGroup?: string): Promise<void> {
     try {
       const headers = await this.getAuthHeaders();
-      
+
       await fetch(`${API_BASE_URL}/predictions/${predictionId}/feedback/`, {
         method: 'POST',
         headers,
@@ -244,7 +244,7 @@ class ApiService {
       const response = await fetch(`${API_BASE_URL.replace('/api/v1', '')}/health/`, {
         method: 'GET',
       });
-      
+
       return response.ok;
     } catch (error) {
       console.warn('Backend health check failed:', error);
@@ -256,7 +256,7 @@ class ApiService {
   async testAuthentication(): Promise<boolean> {
     try {
       const headers = await this.getAuthHeaders();
-      
+
       const response = await fetch(`${API_BASE_URL}/auth/verify-token/`, {
         method: 'POST',
         headers,

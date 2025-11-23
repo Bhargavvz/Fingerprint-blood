@@ -117,10 +117,6 @@ staticfiles/
 media/
 logs/
 
-# Machine Learning
-ml_models/trained_models/*.pth
-ml_models/trained_models/*.joblib
-ml_models/trained_models/*.pkl
 
 # Firebase
 firebase-credentials.json

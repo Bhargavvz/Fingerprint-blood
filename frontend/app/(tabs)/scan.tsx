@@ -95,7 +95,7 @@ export default function ScanScreen() {
       setTimeout(() => {
         clearInterval(progressInterval);
         setProgress(1);
-        
+
         setTimeout(() => {
           const bloodGroups = ['A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-'];
           const randomBloodGroup = bloodGroups[Math.floor(Math.random() * bloodGroups.length)];
@@ -125,13 +125,13 @@ export default function ScanScreen() {
 
   const handleCapture = async () => {
     if (!cameraRef.current) return;
-    
+
     // Log analytics event for scan start
     logAnalyticsEvent('fingerprint_scan_started', {
       timestamp: new Date().toISOString(),
       camera_facing: facing
     });
-    
+
     triggerHaptic();
     setCaptured(true);
     setProcessing(true);
@@ -151,7 +151,7 @@ export default function ScanScreen() {
     setTimeout(() => {
       clearInterval(progressInterval);
       setProgress(1);
-      
+
       setTimeout(() => {
         const bloodGroups = ['A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-'];
         const randomBloodGroup = bloodGroups[Math.floor(Math.random() * bloodGroups.length)];
@@ -217,7 +217,7 @@ export default function ScanScreen() {
       <View style={styles.cameraContainer}>
         <CameraView style={styles.camera} facing={facing} ref={cameraRef}>
           <FingerprintGuide isVisible={!captured} />
-          
+
           {/* Real-time Feedback Overlay */}
           {!captured && (
             <View style={styles.feedbackOverlay}>
@@ -228,7 +228,7 @@ export default function ScanScreen() {
                     {focusStatus === 'good' ? 'Focus Good' : 'Poor Focus'}
                   </Text>
                 </View>
-                
+
                 <View style={[styles.feedbackItem, lightingStatus === 'good' ? styles.feedbackGood : styles.feedbackPoor]}>
                   {lightingStatus === 'good' ? (
                     <Sun size={16} color="#059669" />
@@ -246,7 +246,7 @@ export default function ScanScreen() {
       </View>
 
       <View style={styles.controls}>
-        <TouchableOpacity 
+        <TouchableOpacity
           style={styles.galleryButton}
           onPress={handleGalleryUpload}
         >
